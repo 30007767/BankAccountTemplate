@@ -1,7 +1,6 @@
 package pt.ual.bank;
 
-
-public class BusinessAccountClass extends AccountClass implements BusinessAccount {
+public class BusinessAccountClass extends AccountClass implements BusinessAccount{
     private double loanLimit;
 
     public BusinessAccountClass(String number, String holder, double balance, double loanLimit) {
@@ -10,20 +9,22 @@ public class BusinessAccountClass extends AccountClass implements BusinessAccoun
     }
 
     @Override
-    public void setLoanLimit(double loanLimit) {
-        this.loanLimit = loanLimit;
-    }
-
-    @Override
-    public double getLoanLimit() {
+    public double getLoanLimite() {
         return this.loanLimit;
     }
 
     @Override
+    public void setLoanLimite(double loanLimit) {
+        this.loanLimit = loanLimit;
+
+    }
+
+    @Override
     public void loan(double amount, double operationCost) throws InvalidAmountException {
-        if(amount > this.getLoanLimit()){
+        if (amount > this.getLoanLimite()){
             throw new InvalidAmountException();
         }
         this.deposit(amount - operationCost);
+
     }
 }
